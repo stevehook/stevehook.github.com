@@ -1,3 +1,8 @@
+---
+title: "Getting started with Vim"
+layout: default
+---
+
 **Why Vim?**
 
 My first experience of vi was on an ancient VAX/VMS machine at college. From what little I remember it was an uncomfortable experience that I never expected to revisit.
