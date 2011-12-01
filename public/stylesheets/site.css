@@ -1,0 +1,9 @@
+html {
+  background: #ddd none no-repeat scroll;
+}
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff none no-repeat scroll;
+}
