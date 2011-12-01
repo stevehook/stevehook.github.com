@@ -3,5 +3,5 @@ layout: default
 ---
 
 <h2>{{ page.title }}</h2>
-<h5>{{ page.date }}</h5>
+<h5>{{ page.date | date_to_string }}</h5>
 <div>{{ content }}</div> 
