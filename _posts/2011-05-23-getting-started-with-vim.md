@@ -1,6 +1,6 @@
 ---
 title: "Getting started with Vim"
-layout: default
+layout: post
 ---
 
 **Why Vim?**

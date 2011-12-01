@@ -8,3 +8,7 @@ body {
   background: #fff none no-repeat scroll;
   padding: 5px;
 }
+
+#siteHeading {
+  border-bottom: 2px solid #ccc;
+}
