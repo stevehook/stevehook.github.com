@@ -3,13 +3,20 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/public/stylesheets/site.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="/public/css/site.css" type="text/css" media="screen">
 </head>
 <body>
-  <div id="siteHeading">
-    <h1>Steve Hook</h1>
-    <h4>Stuff I might need to remember</h4>
+  {% include header.html %}
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-3'>
+        {% include sidebar.html %}
+      </div>
+      <div class='col-md-9'>
+        {{ content }}
+      </div>
+    </div>
   </div>
-  <div>{{ content }}</div> 
 </body>
 </html>

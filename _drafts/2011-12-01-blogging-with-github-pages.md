@@ -12,7 +12,7 @@ format, get them right locally and then push them up to Github to
 publish.
 
 Jekyll does just enough to get a blog up and running without imposing
-any unecessary style templates, so I can keep the design minimal (in
+any unnecessary style templates, so I can keep the design minimal (in
 line with my minimal design capabilities).
 
 At the moment this is still very much work in progress but it serves the
