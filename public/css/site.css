@@ -1,14 +1,18 @@
 html {
-  /* background: #ddd none no-repeat scroll; */
 }
 
 body {
-  /* max-width: 1200px; */
-  /* margin: 0 auto; */
-  /* background: #fff none no-repeat scroll; */
-  /* padding: 5px; */
+  font: lighter 13pt 'Open Sans', 'Helvetica', sans-serif;
 }
 
-#siteHeading {
-  /* border-bottom: 2px solid #ccc; */
+.sidebar {
+  margin: 20px 0;
+}
+
+.sidebar li {
+  margin: 0 0 7px;
+}
+
+.sidebar a {
+  font-size: 120%;
 }
