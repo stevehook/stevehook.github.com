@@ -5,6 +5,12 @@ body {
   font: lighter 13pt 'Open Sans', 'Helvetica', sans-serif;
 }
 
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 12pt;
+  }
+}
+
 .sidebar {
   margin: 20px 0;
 }
