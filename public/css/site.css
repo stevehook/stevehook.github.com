@@ -5,9 +5,28 @@ body {
   font: lighter 13pt 'Open Sans', 'Helvetica', sans-serif;
 }
 
+pre code {
+  font-size: 10pt;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.collapsed-menu-icon {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  font-size: 150%;
+}
+
 @media screen and (max-width: 768px) {
   body {
     font-size: 12pt;
+  }
+  pre code {
+    font-size: 9pt;
+  }
+  .jumbotron {
+    padding: 0;
   }
 }
 
