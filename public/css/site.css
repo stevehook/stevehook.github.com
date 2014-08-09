@@ -16,22 +16,28 @@ pre code {
   top: 25px;
   right: 20px;
   font-size: 150%;
+  display: none !important;
+}
+
+html.home .collapse-menu-icon {
+  display: inherit;
 }
 
 @media screen and (max-width: 768px) {
   body {
     font-size: 12pt;
   }
+  pre {
+    word-wrap: inherit;
+  }
   pre code {
     font-size: 9pt;
-  }
-  .jumbotron {
-    padding: 0;
+    overflow: auto;
   }
 }
 
 .sidebar {
-  margin: 20px 0;
+  margin: 20px 0 30px;
 }
 
 .sidebar li {
@@ -40,4 +46,20 @@ pre code {
 
 .sidebar a {
   font-size: 120%;
+}
+
+@media screen and (max-width: 992px) {
+  .sidebar {
+  }
+
+  .mobile-hidden {
+    display: none;
+    visibility: collapse;
+    height: 0;
+  }
+
+  .jumbotron {
+    margin: 0;
+    padding: 0 0 10px;
+  }
 }
