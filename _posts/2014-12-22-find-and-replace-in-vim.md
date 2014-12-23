@@ -12,7 +12,6 @@ If you are only concerned with a single file in the current buffer then
 things are fairly straightforward. There are a couple of ways that you
 can tackle the problem.
 
-
 ###The substitute command
 You can use the substitute command (or `:s` for short) to replace one
 string (or regex) with a different string:
@@ -28,7 +27,7 @@ occurrence of `foo` what you probably want is:
 `%` effectively means all lines and the `g` modifier means operate on
 each occurrence in the given line.
 
-The other useful modifiers are `c` for confirmation and `i` for
+Other useful modifiers are `c` for confirmation and `i` for
 case-insensitive matching, e.g.
 
     :%s/foo/bar/gci
@@ -77,3 +76,9 @@ Finally you'll need to save those files:
 
     :argdo w
 
+This approach works but is a bit of a sledgehammer because we are
+processing every file that *may* contain the search string. There is an
+excellent
+[VimCast](http://vimcasts.org/episodes/project-wide-find-and-replace/)
+discussing a more refined approach and ways in which this may get a
+little smarter in future versions of Vim.
