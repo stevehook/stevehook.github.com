@@ -48,6 +48,10 @@ html.home .collapse-menu-icon {
   font-size: 120%;
 }
 
+.header-menu {
+  display: none;
+}
+
 @media screen and (max-width: 992px) {
   .sidebar {
   }
@@ -56,6 +60,10 @@ html.home .collapse-menu-icon {
     display: none;
     visibility: collapse;
     height: 0;
+  }
+
+  .mobile-reveal {
+    display: block;
   }
 
   .jumbotron {
