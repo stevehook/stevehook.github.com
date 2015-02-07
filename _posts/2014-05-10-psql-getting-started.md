@@ -113,3 +113,8 @@ and want to start again, e.g.
 
     psql> SELECT * FROM\r
 
+###Backup and restore
+
+    $ pg_dump -d <database> -U <user> > <filepath>
+    $ psql -d <database> -U <user> < <filepath>
+
