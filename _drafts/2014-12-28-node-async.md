@@ -34,7 +34,8 @@ executed when we call `each` on it, synchronously, so we wait for the
 result before this program can continue. It's a simple programming model
 because things happen in a linear fashion, call a method, it returns a
 result and proceed to the next line. All that goes out the window with
-Node. So with Node.js (and the node-orm2 library):
+Node. So this is what the same code might look like with Node.js (using
+the lodash and node-orm2 libraries):
 
     Order.find({ userId: currentUser.id }, function(err, orders) {
       _.forEach(orders, function(order) {
@@ -57,13 +58,11 @@ tempting to use (don't). Persevere though and async coding will start to
 feel natural after a short time and often it really doesn't cause any
 problem other than having to type `function(...) {...}` a lot.
 
-
-##Common patterns
+##Common asynchronous patterns
 
 The APIs built-into Node.js all use a common callback pattern for
 asynchronous methods. However many third-party modules use a promises
 rather than direct callbacks. We need learn both approaches.
-
 
 ###Node.js callbacks
 
@@ -176,5 +175,34 @@ managing callbacks in userland outside the core.
 
 ###async.js
 
+Promises are not the only solution to callback hell. In Ruby on Rails I
+am accustomed to writing a seed data file to populate a database with
+some initial or test data. I can easily do the same with Node.js by
+writing a simple JavaScript file but I soon hit a couple of problems
+caused by the asynchronous API I was using.
+
+Suppose I want to create a user, order and order item after cleaning up
+any existing data, here is a first attempt:
+
+    db.OrderItem.destroy({}).then(function() {
+      db.Order.destroy({}).then(function() {
+        db.User.destroy({}).then(function() {
+          db.User.create({ name: 'Bob', ... }).then(function(user) {
+            db.Order.create({ userId: user.id, ... }).then(function(order) {
+              db.OrderItem.create({ orderId: order.id, ... }).then(function(orderItem) {
+                process.exit();
+              });
+            });
+          });
+        });
+      });
+    });
+
+So already we have 6 levels of nesting, and we are only creating 3
+database records here. Maybe we could be a bit smarter and parallelize
+the clean-up part of this script but we are still left with the problem
+that to create an order item I need to have finished created the order
+because I need to know its `id`, and to create the order I need to have
+finished creating the user, and so on. This gets messy quite quickly.
 
 

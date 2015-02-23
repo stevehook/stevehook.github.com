@@ -11,13 +11,11 @@ ways but it's not without it's own drawbacks and gotchas.
 So recently I spent some time staring at a piece of code that looked
 something like this:
 
-    ```coffeescript
     _.foreach fruits, (fruit) ->
       if fruit.isApple()
         dontEatIt()
       else
         eatIt()
-    ```
 
 Here I'm using the excellent lodash library and it's `forEach` method to
 iterate over a collection of fruits containing, lets say some oranges,
@@ -50,10 +48,15 @@ learn the basics 3-4 years ago when it was pretty new and being pushed
 by the Rails community. Since then I've become less keen and haven't set
 out to use it any projects where the choice is down to me.
 
-There are a few reasons for this. Firstly, it adds another layer of
-complexity to the tool chain and adds another layer that the developer
-needs to understand. The important point here is that I still need to
-know JavaScript as well to understand what I'm writing and to debug any
-issues. Secondly, ES6 addresses many of the same issues that
-CoffeeScript was designed to fix so in the future there is going to be
-very little need for it.
+There are a couple of reasons for this. Firstly, it adds another layer
+of complexity to the tool chain and adds another layer that the
+developer needs to understand. The important point here is that I still
+need to know JavaScript as well to understand what I'm writing and to
+debug any issues. And when a new developer joins the team, perhaps
+fairly new to JavaScript, is it fair to expect her or him to pick up
+both languages at once?
+
+Secondly, ES6 addresses many of the same issues that CoffeeScript was
+designed to fix so in the future there is going to be very little need
+for it. So it seems as though its best years are behind it. I know the
+feeling.
