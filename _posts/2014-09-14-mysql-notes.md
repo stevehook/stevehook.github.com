@@ -85,6 +85,10 @@ To see a list of tables in the current database:
 
     mysql> show tables;
 
+or to filter by name:
+
+    mysql> show tables like '%tax%';
+
 And then to drill down into the schema for an individual table:
 
     mysql> describe <mytable>;
@@ -103,7 +107,7 @@ Which databases are available?:
 
 Change database:
 
-    mysql> user <db-name>;
+    mysql> use <db-name>;
 
 
 ##DBA
