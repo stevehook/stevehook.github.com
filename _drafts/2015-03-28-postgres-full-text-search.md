@@ -52,13 +52,103 @@ product might be represented by the following query:
     FROM products
     INNER JOIN manafacturers ON manufacturers.id = products.manufacturer.id;
 
-...
+Next step is to map the product text into a tsvector so that it can be
+searched:
+
+    SELECT products.id,
+      to_tsvector(products.title || ' ' || manufacturers.name || ' ' || products.code as document)
+    FROM products
+    INNER JOIN manafacturers ON manufacturers.id = products.manufacturer.id;
+
+There is a bit more work to do here but we need to first look at
+`tsquery`.
 
 ###tsquery
 
-So far we've indexed some documents using `to_tsvector` but we haven't
+So far we've *indexed* some documents using `to_tsvector` but we haven't
 tried to do any full text queries or matches.
 
+PostgreSQL provides the `tsquery` type to represent a search expression.
+You can convert a string to a `tsquery` using `to_tsquery`:
+
+    psql> select to_tsquery('cat');
+
+    ┌────────────┐
+    │ to_tsquery │
+    ├────────────┤
+    │ 'cat'      │
+    └────────────┘
+    (1 row)
+
+You can use the following operators to build up a search expression:
+
+* `&` - AND
+* `|` - OR
+* `!` - NOT
+
+So for example `(dog | hound) & !cat` will match a document containing
+*dog* or *hound* unless it also contains *cat*.
+
+Searches are performed using regular SQL `SELECT` statements by putting
+a condition into the `WHERE` clause that compares a `tsvector` to a
+`tsquery` using the `@@` operator. You can experiment with these
+conditions:
+
+    psql> select to_tsvector('rabbits and dogs') @@ to_tsquery('(dog | hound) & !cat') as "match?";
+    ┌────────┐
+    │ match? │
+    ├────────┤
+    │ t      │
+    └────────┘
+    (1 row)
+
+    psql> select to_tsvector('cats and dogs') @@ to_tsquery('(dog | hound) & !cat') as "match?";
+    ┌────────┐
+    │ match? │
+    ├────────┤
+    │ f      │
+    └────────┘
+    (1 row)
+
+Continuing the more realistic example from above, the following query
+will search for all products that have *cake* in their searchable text:
+
+    SELECT products.id, products.title
+    FROM products
+    INNER JOIN manafacturers ON manufacturers.id = products.manufacturer.id;
+    WHERE to_tsvector(products.title || ' ' || manufacturers.name ||
+      ' ' || products.code as document) @@ to_tsquery('cake');
+
+##Views
+
+Building `tsvector`s from scratch each time is fairly cumbersome and not
+at all efficient. Typically the 'schema' for you search documents is
+fixed so it makes sense to create a materialised view to contain the
+search documents so that they can be queried more easily.
 
 
+##Indexing
 
+
+##Other search features
+
+
+##Ruby APIs
+
+
+## Pros and cons
+
+There are a few advantages to having your database take care of search
+rather use a specialised text indexing system.
+
+If you already have a database then using it for search means one less
+moving part in your overall system architecture. So it will save you
+some effort configuring a separate system and perhaps save you running
+costs if you would otherwise have to pay for a hosted search service.
+
+Another benefit is that as a developer you probably already know SQL so
+once you take the trouble to learn the basics about `tsquery` and `tsvector`
+you should be pretty comfortable working with your search data.
+
+The cons are that PostgreSQL is still a little behind ElasticSearch and
+Lucene in terms of features and tune-ability.
