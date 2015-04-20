@@ -119,6 +119,9 @@ will search for all products that have *cake* in their searchable text:
     WHERE to_tsvector(products.title || ' ' || manufacturers.name ||
       ' ' || products.code as document) @@ to_tsquery('cake');
 
+This query is fairly messy and won't be very fast so we still have work
+to do.
+
 ##Views
 
 Building `tsvector`s from scratch each time is fairly cumbersome and not
@@ -139,7 +142,7 @@ search documents so that they can be queried more easily.
 ## Pros and cons
 
 There are a few advantages to having your database take care of search
-rather use a specialised text indexing system.
+rather than use a specialised text indexing system.
 
 If you already have a database then using it for search means one less
 moving part in your overall system architecture. So it will save you
