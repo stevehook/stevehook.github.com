@@ -50,9 +50,9 @@ This is where Bundler comes in, it manages gem dependencies for us. For
 each project we can create a `Gemfile` to declare what our project
 needs, including rules about the versions we need. Bundler then helps:
 
-    * Install gem dependencies - making sure a compatible set of version
-        is available to your application.
-    * Ensure that the right gems are loaded at runtime.
+* Install gem dependencies - making sure a compatible set of version is
+    available to your application.
+* Ensure that the right gems are loaded at runtime.
 
 Bundler has been around for a while now but seasoned Ruby developers
 will be able to tell you about pre-bundler days, I'm not sure how they
@@ -149,8 +149,9 @@ Then you can install whatever Ruby versions you need, e.g.:
     $ rbenv install 2.3.0
 
 ##References
-    * http://patshaughnessy.net/2011/9/24/how-does-bundler-bundle
-    * http://kerdany.wordpress.com/2013/11/23/how-does-bundler-do-its-magic/
-    * https://github.com/sstephenson/rbenv/wiki/understanding-binstubs
-    * https://github.com/rbenv/rbenv#understanding-shims
-    * http://bundler.io/
+
+* http://patshaughnessy.net/2011/9/24/how-does-bundler-bundle
+* http://kerdany.wordpress.com/2013/11/23/how-does-bundler-do-its-magic/
+* https://github.com/sstephenson/rbenv/wiki/understanding-binstubs
+* https://github.com/rbenv/rbenv#understanding-shims
+* http://bundler.io/
