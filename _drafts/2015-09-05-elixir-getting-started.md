@@ -4,7 +4,7 @@ layout: post
 ---
 
 
-##Some notes:
+## Some notes:
 
 Elixir is:
 
@@ -16,12 +16,12 @@ Elixir is:
     * Runs on the Erlang VM (Erlang is based on Prolog)
 
 
-##Why Elixir matters
+## Why Elixir matters
 
 
 
 
-###Phoenix
+### Phoenix
 
 Phoenix is a Web framework and like Rails did for Ruby, it is brining a
 lot of attention. But whereas a lot of Ruby devs (even experienced ones)
@@ -53,7 +53,7 @@ the trade-off is slightly more code. YMMV but always keep in mind that
 the end goals is maintainability.
 
 
-##Some resources:
+## Some resources:
 
     * http://elixir-lang.org/
     * http://www.phoenixframework.org/

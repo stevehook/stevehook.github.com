@@ -9,7 +9,7 @@ what does Docker offer and what does it all mean?
 
 I'm just finding my way with Docker and these are my notes.
 
-##What is it for?
+## What is it for?
 
 One use case is to provide a consistent runtime environment in which to
 develop and test a system.
@@ -29,9 +29,9 @@ benefits.
 Of course Docker has other use cases for CI and production servers but
 I'm not going to try to explain all of those here.
 
-##Docker concepts
+## Docker concepts
 
-###Images, Containers and Dockerfiles
+### Images, Containers and Dockerfiles
 
 An image is the term for a saved Docker file-system and configuration. A
 container is an instance of a running image. An image/container can be
@@ -44,7 +44,7 @@ be installed in an image and the configuration of that image (e.g. the
 ports that it exposes).
 
 
-##Installing Docker
+## Installing Docker
 
 I use a Mac for development. Docker doesn't run *natively* on OS X you
 need a VM to run. On a Mac Docker runs inside an Ubuntu VM running on
@@ -58,8 +58,8 @@ invisible.
 Getting set up is as simple as downloading and running the Docker
 Toolbox from https://www.docker.com/products/docker-toolbox
 
-##Creating a Dockerfile
+## Creating a Dockerfile
 
 
-##Docker compose
+## Docker compose
 

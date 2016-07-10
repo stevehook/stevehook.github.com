@@ -9,20 +9,20 @@ simple ad-hoc queries and updates. I don't feel quite so at home using
 the `mysql` CLI as `psql` but once you find your way around and tweak it
 a little its usable enough.
 
-##Connecting to the MySQL CLI:
+## Connecting to the MySQL CLI:
 
     $ mysql --user=<username> --password=<password> database_name
     mysql>
 
-##Quit
+## Quit
 
     mysql> \q
     Bye
     $
 
-##Useful commands
+## Useful commands
 
-###Edit statements
+### Edit statements
 
 If you want to edit the most recent statement in your default text
 editor you can use `\e`:
@@ -31,7 +31,7 @@ editor you can use `\e`:
     ERROR 1146 (42S02): Table 'ordrs' doesn't exist
     mysql> \e
 
-###Outputting to a file
+### Outputting to a file
 
 The `tee` command lets you copy all output to a file. `notee` to switch
 it off again:
@@ -41,7 +41,7 @@ it off again:
     mysql> notee
     Outfile disabled.
 
-###Reverse search
+### Reverse search
 
 Ctrl-r can be configured to work the same way it does in the
 shell to let you retrieve previous commands if you add the following to
@@ -49,7 +49,7 @@ your `~/.editrc`:
 
     bind "^R" em-inc-search-prev
 
-##Configuring the CLI
+## Configuring the CLI
 
 There are many settings that you can use to customise the CLI. You can
 set many of these options at the command prompt on a per session basis.
@@ -75,11 +75,11 @@ into a `~/.my.cnf` file. e.g.
 See http://dev.mysql.com/doc/refman/5.7/en/mysql-command-options.html
 and http://dev.mysql.com/doc/refman/5.7/en/option-files.html
 
-###Command reference
+### Command reference
 
 http://dev.mysql.com/doc/refman/5.7/en/mysql-commands.html
 
-##Data dictionary
+## Data dictionary
 
 To see a list of tables in the current database:
 
@@ -110,9 +110,9 @@ Change database:
     mysql> use <db-name>;
 
 
-##DBA
+## DBA
 
-###Where are my data files?
+### Where are my data files?
 
 If you need to find your datafiles then use:
 
@@ -132,7 +132,7 @@ If you need to find your datafiles then use:
     | tmpdir                    | /var/folders/pl/8w9lz0_537n2st2rcq95q24m0000gn/T/    |
     +---------------------------+------------------------------------------------------+
 
-###Backing up databases
+### Backing up databases
 
 If you just want to backup a single database:
 

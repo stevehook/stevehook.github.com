@@ -3,7 +3,7 @@ title: "Blogging with Github pages"
 layout: post
 ---
 
-###Why?
+### Why?
 
 I finally got around to setting up this site on Github using Github
 pages and Jekyll. The process couldn't be much simpler and is perfect
@@ -19,6 +19,6 @@ At the moment this is still very much work in progress but it serves the
 main purpose of a blog for me, being a place to store things I have
 learnt to prop up my own memory.
 
-###How to get started?
+### How to get started?
 
 

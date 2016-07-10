@@ -7,7 +7,7 @@ It's easy to start with good intentions and then get sucked into an
 unnecessarily complicated toolchain. Maybe it's best to start with a minimal
 setup.
 
-##Starting simple
+## Starting simple
 
 When starting a new project in a language or framework that I'm still
 learning it's hard to resist the urge to throw a whole load of tools and
@@ -19,7 +19,7 @@ particularly strong for me partly because the turnover of shiny new
 tools and JS frameworks is so rapid but also because it's not something
 I do every day.
 
-##Focus on what you really need
+## Focus on what you really need
 
 So I'm trying to build a simple TODO list and I want to
 focus on learning React.js in it's simplest form to begin with.
@@ -49,7 +49,7 @@ Above all I want the tools that I choose to be easily replaceable in the
 future when requirements change, I'm pretty sure that I will make
 some wrong choices at the beginning.
 
-##So many options
+## So many options
 
 When I've done this kind of thing before I've been tempted to scaffold
 my project with Yeoman. This is great for getting up and running but it
@@ -74,9 +74,9 @@ Yeoman has generated for me. For example, taking a peek at the Gruntfile
 I see a lot of stuff that I don't understand. Without knowing all that
 stuff it's hard then for me to customise and extend what I've got.
 
-##Start simple
+## Start simple
 
-###npm
+### npm
 
 So let's start by seeing how far I can get just with npm as a package
 manager. I already have a reasonable idea of how this works and a
@@ -110,7 +110,7 @@ use npm to declare and install some dependencies starting with React:
 
     $ npm install
 
-###Browersify
+### Browersify
 
 The other thing I need is something to help me integrate my own
 JavaScript code with React and other dependencies. So that is why I've
@@ -133,12 +133,12 @@ Because we have declared `react` as a dependency in our package.json we
 can import it using `require` and we can export `MyComponent` so that it
 can in turn be required in other modules.
 
-##Enabling ES6
+## Enabling ES6
 
 It's probably about time I stopped just writing old-school JavaScript
 so.
 
-###Babel
+### Babel
 
 Babel is a JavaScript compiler that takes ES6 or more properly ES2015
 and converts it to ES5 that even older browsers understand. It's
@@ -162,7 +162,7 @@ want to use).
       ]
     },
 
-##A little automation
+## A little automation
 
 By this stage I've already got a handful of tasks that I need to run
 repeatedly. I don't want to type long commands and I might forget what
@@ -208,7 +208,7 @@ I will no doubt need more than this if and when the project gets any
 more complicated but for now it does the job and I can easily add to
 this list.
 
-##Conclusion
+## Conclusion
 
 I'm quite happy with the tools I have and I feel I have a reasonable
 understanding of what I've set up. That means I am in a pretty good

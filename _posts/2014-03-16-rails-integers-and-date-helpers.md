@@ -3,7 +3,7 @@ title: "Dates and Integers in Active Support"
 layout: post
 ---
 
-##A quick experiment
+## A quick experiment
 
 Active Support monkey-patches lots of very useful helper methods into
 some basic Ruby types, like the date handling helpers that get mixed

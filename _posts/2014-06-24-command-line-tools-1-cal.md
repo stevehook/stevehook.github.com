@@ -5,7 +5,7 @@ layout: post
 
 Quick post about another thing I no longer need to use the mouse for.
 
-##cal
+## cal
 
 So now when I can't remember what day the end of the month falls on:
 

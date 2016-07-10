@@ -12,7 +12,7 @@ interface that I can start throwing SQL statements at.
 psql is that tool and after some initial confusion it turns out to be
 pretty easy to work with.
 
-##Starting it up
+## Starting it up
 
 To login to the `sales` database as user `alice` without a password:
 
@@ -23,7 +23,7 @@ To login to the `sales` database:
     $ psql -d sales
 
 
-##Quitting
+## Quitting
 
 So you started psql but you want to get out, you try `exit`, `quit` and
 find that you are still stuck at the psql prompt. What you need is the
@@ -31,7 +31,7 @@ find that you are still stuck at the psql prompt. What you need is the
 
     psql> \q
 
-##Getting help
+## Getting help
 
 Next we need to work out how to get help.
 
@@ -48,12 +48,12 @@ or just list all SQL commands:
 
     psql> \h
 
-##Basic schema commands
+## Basic schema commands
 
 Its worth taking a very quick tour of the meta-commands for finding your
 way around the database schema:
 
-###Listing databases
+### Listing databases
 
     psql> \list
 
@@ -62,7 +62,7 @@ new connection (there is no `use <database-name>`).
 
     psql> \c <database-name>
 
-###Listing tables
+### Listing tables
 
     psql> \dt
 
@@ -70,7 +70,7 @@ or including other objects (e.g. sequences):
 
     psql> \d
 
-###Listing table columns
+### Listing table columns
 
     psql> \d <table-name>
 
@@ -81,9 +81,9 @@ for more detail:
 This is just a small sample of the schema meta-commands, to see the
 rest remember that `\?` gives you a list.
 
-##Other Useful commands
+## Other Useful commands
 
-###Edit the last command
+### Edit the last command
 
 If you want to make a small change to a previous SQL command you don't need
 to type it all out again. `\e` will open the last command in your
@@ -95,25 +95,25 @@ Note that if the command you edit finishes with a semi-colon it will be
 run immediately. Remove the semi-colon if you want to just prepare a
 statement for execution.
 
-###History
+### History
 
     psql> \s
 
 Prints the history to the screen. `\s filename` will write it to a file.
 Note that this doesn't work on some builds on OSX.
 
-###Editing a command in history
+### Editing a command in history
 
 Cycle through the history, e.g. with up arrow, then hit `\e`.
 
-###Clearing the query (input) buffer
+### Clearing the query (input) buffer
 
 `\r` will clear the buffer if you get part way through typing a command
 and want to start again, e.g.
 
     psql> SELECT * FROM\r
 
-###Backup and restore
+### Backup and restore
 
     $ pg_dump -d <database> -U <user> > <filepath>
     $ psql -d <database> -U <user> < <filepath>

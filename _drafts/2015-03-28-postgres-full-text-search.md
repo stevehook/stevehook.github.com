@@ -8,13 +8,13 @@ recently I hadn't used it in a project. Previously, I'd always worked
 with Lucene based indexing tools (ElasticSearch and Solr). So how does
 it compare?
 
-##The basics
+## The basics
 
 PostgreSQL introduces two new datatypes to support full text search,
 `tsvector` which represents a text document that can be searched for and
 `tsquery` which represents something you want to search for.
 
-###tsvector
+### tsvector
 
 You can use `tsvector` to transform text into something searchable. It's
 easy enough to explore what it does using the `to_tsvector` function:
@@ -63,7 +63,7 @@ searched:
 There is a bit more work to do here but we need to first look at
 `tsquery`.
 
-###tsquery
+### tsquery
 
 So far we've *indexed* some documents using `to_tsvector` but we haven't
 tried to do any full text queries or matches.
@@ -122,7 +122,7 @@ will search for all products that have *cake* in their searchable text:
 This query is fairly messy and won't be very fast so we still have work
 to do.
 
-##Views
+## Views
 
 Building `tsvector`s from scratch each time is fairly cumbersome and not
 at all efficient. Typically the 'schema' for you search documents is
@@ -130,13 +130,13 @@ fixed so it makes sense to create a materialised view to contain the
 search documents so that they can be queried more easily.
 
 
-##Indexing
+## Indexing
 
 
-##Other search features
+## Other search features
 
 
-##Ruby APIs
+## Ruby APIs
 
 
 ## Pros and cons

@@ -6,7 +6,7 @@ layout: post
 Quick reminder about queries to count rows across all tables in a
 database.
 
-##Counting rows
+## Counting rows
 
 If you have a big database and you quickly need to find out how many
 rows are in each table you don't really want to be running `SELECT
@@ -23,7 +23,7 @@ If you want the grand total:
     SELECT sum(n_live_tup)
       FROM pg_stat_user_tables;
 
-##Put these queries in your .psqlrc
+## Put these queries in your .psqlrc
 
 If like me you don't do this often enough to remember these queries add
 them to your `.psqlrc` as aliases:

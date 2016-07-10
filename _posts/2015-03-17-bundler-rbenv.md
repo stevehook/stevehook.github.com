@@ -11,7 +11,7 @@ attempting to do too much else.
 To understand `rbenv` we first need to a quick recap of RubyGems and
 Bundler.
 
-##RubyGems
+## RubyGems
 
 RubyGems is the package management framework for Ruby. In modern
 versions of Ruby it's a built-in, though it used to be a separate
@@ -27,7 +27,7 @@ You can list installed gems with:
 You can also use the `gem` command to create and build new Ruby gems but
 we won't go into that here.
 
-##Bundler
+## Bundler
 
 Each gem declares a list of dependencies, for example the `rails` gem
 depends on several other gems like `activesupport`, `activerecord`,
@@ -70,7 +70,7 @@ installed. You check this into version control so that your colleagues
 end up installing exactly the same versions of each gem. That's the
 basic idea, though there are a few other Bundler commands to learn.
 
-##rbenv
+## rbenv
 
 `rbenv` works by creating a directory of *shims* for each Ruby executable
 (like `ruby`, `irb` and `gem`), and ensures that those appear in your
@@ -102,7 +102,7 @@ rubies with:
 
     $ rbenv install -l
 
-###rbenv and Bundler
+### rbenv and Bundler
 
 `rbenv` is designed to do just enough to manage different Ruby versions
 without overlapping with anything that Bundler does. So unlike RVM
@@ -119,7 +119,7 @@ Binstubs are just wrappers around the real executable and in this case
 they will ensure that Bundler is loaded before invoking the wrapped
 executable, just like `bundle exec` does.
 
-###Switching to rbenv
+### Switching to rbenv
 
 `rbenv` doesn't play nicely with RVM so if you are an RVM user as I was
 you'll need to completely remove it from your computer:
@@ -148,7 +148,7 @@ Then you can install whatever Ruby versions you need, e.g.:
 
     $ rbenv install 2.3.0
 
-##References
+## References
 
 * http://patshaughnessy.net/2011/9/24/how-does-bundler-bundle
 * http://kerdany.wordpress.com/2013/11/23/how-does-bundler-do-its-magic/

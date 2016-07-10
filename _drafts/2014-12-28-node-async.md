@@ -6,7 +6,7 @@ layout: post
 Writing asynchronous code is one of the biggest challenges for a
 newcomer to Node.js.
 
-##Too many callbacks?
+## Too many callbacks?
 
 Asynchronous I/O is the core strength of Node but it does make life
 harder for the programmer. First you have to get your head around the
@@ -15,7 +15,7 @@ that you will come up against situations that lead to so-called callback
 hell and you'll then need to find ways to stop you code turning into a
 mess of nested functions.
 
-##Getting into the async mindset
+## Getting into the async mindset
 
 Writing code that reads from or writes to a database is second nature
 for most developers. Most of the database APIs I have worked with have
@@ -58,13 +58,13 @@ tempting to use (don't). Persevere though and async coding will start to
 feel natural after a short time and often it really doesn't cause any
 problem other than having to type `function(...) {...}` a lot.
 
-##Common asynchronous patterns
+## Common asynchronous patterns
 
 The APIs built-into Node.js all use a common callback pattern for
 asynchronous methods. However many third-party modules use a promises
 rather than direct callbacks. We need learn both approaches.
 
-###Node.js callbacks
+### Node.js callbacks
 
 The 'standard' callback is a function that takes two parameters
 `callback(err, result)`. The first argument to the callback function is
@@ -114,7 +114,7 @@ a different file. With a made up API, it might look something like this:
       });
     });
 
-###Promises
+### Promises
 
 Promises are objects that an asynchronous method returns to represent a
 value that may be available in the future but isn't yet. They are an
@@ -173,7 +173,7 @@ terminology and therefore Node.js could provide better inter-operability
 between different modules by leaving promises and other tools for
 managing callbacks in userland outside the core.
 
-###async.js
+### async.js
 
 Promises are not the only solution to callback hell. In Ruby on Rails I
 am accustomed to writing a seed data file to populate a database with

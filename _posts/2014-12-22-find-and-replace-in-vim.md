@@ -7,12 +7,12 @@ Finding and replacing a given string is a pretty basic text editing
 feature. Vim fulfils this requirement more than adequately but there are
 a few tricks to learn and remember.
 
-##Working in the current buffer
+## Working in the current buffer
 If you are only concerned with a single file in the current buffer then
 things are fairly straightforward. There are a couple of ways that you
 can tackle the problem.
 
-###The substitute command
+### The substitute command
 You can use the substitute command (or `:s` for short) to replace one
 string (or regex) with a different string:
 
@@ -39,7 +39,7 @@ cursor over the word `foo` hit the `*` key then:
 
     :%s//bar/g
 
-###Change and repeat
+### Change and repeat
 If you don't want to drop into command mode, you can change the first
 occurrence of the search string, change it manually and then repeat the
 change. So for example, `/foo` finds the first `foo`, `ciw` lets you
@@ -48,7 +48,7 @@ replace it and then `n.` repeats the change on the next match.
 You can repeat the change with a single `.` if you use `cgn` to replace
 the next match in one hit (`gn` finds and selects the next match).
 
-##Working across multiple files
+## Working across multiple files
 I find it a bit more tricky to remember how to find and replace across
 multiple files. Having to change the name of a class or method across an
 entire project can make you wish you were working in a big IDE and a

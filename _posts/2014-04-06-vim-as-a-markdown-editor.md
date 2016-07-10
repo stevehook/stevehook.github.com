@@ -7,7 +7,7 @@ The biggest benefit of using markdown for me is that I can use my
 regular text editor for writing documents. On the rare occasions that I
 am forced to use them these days Word processors seem clumsy and bloated.
 
-###Basic formatting
+### Basic formatting
 
 When editing markdown files you probably want to have word wrapping on
 and you will need to make sure the filetype is set correctly, I have
@@ -31,7 +31,7 @@ installed.
 
 To reformat a selection (to tidy up word-wrapping) the `gq` command is handy.
 
-###Spell checking
+### Spell checking
 
 Its worth getting to know your text editor's spell checker when
 you are writing words as well as code. Fortunately Vim has a perfectly
@@ -58,7 +58,7 @@ but its not so hard, you just need to remember a few commands:
 > Note that there are only two kinds of English, so-called *British*
 > English and *mistakes*.
 
-###Preview
+### Preview
 
 You will probably want to check your markdown before pushing it to your
 blog or wherever it is going.

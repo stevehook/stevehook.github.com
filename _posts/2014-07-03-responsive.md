@@ -12,7 +12,7 @@ devices that I use (a phone, a tablet and a desktop computer). I am not
 a designer or full-time front-end coder so this is going to be pretty
 basic stuff.
 
-##Viewports
+## Viewports
 
 I used Bootstrap as a CSS framework rather than writing everything from
 scratch. Their documentation has some [handy advice about supporting
@@ -34,7 +34,7 @@ to the site layouts makes a huge difference:
 You can also use this tag to disable zoom to stop your audience pinch
 zooming your site.
 
-##Media queries
+## Media queries
 
 So it turns out that Bootstrap does a pretty good job of laying out the
 site once I set the `viewport` but there are a few things I'd like to
@@ -55,7 +55,7 @@ the font smaller when the screen size is below a certain width:
       }
     }
 
-##Bootstrap responsive CSS classes
+## Bootstrap responsive CSS classes
 
 Another thing that needs some attention is the side bar, it's just a
 list of links, that gets dumped above the content in a mobile or tablet

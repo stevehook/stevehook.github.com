@@ -6,7 +6,7 @@ layout: post
 I like CoffeeScript, it is an improvement on plain JavaScript in many
 ways but it's not without it's own drawbacks and gotchas.
 
-##Implicit returns and _.forEach
+## Implicit returns and _.forEach
 
 So recently I spent some time staring at a piece of code that looked
 something like this:
@@ -40,7 +40,7 @@ you return one of JavaScript's many other falsey values, so if
 `dontEatIt()` had simply returned undefined I would not seen this
 problem.
 
-##Would I choose to use CoffeeScript?
+## Would I choose to use CoffeeScript?
 
 For some people it's use of significant whitespace is a major red flag
 but I like using CoffeeScript from time to time. I took the trouble to
