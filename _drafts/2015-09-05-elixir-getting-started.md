@@ -53,6 +53,43 @@ the trade-off is slightly more code. YMMV but always keep in mind that
 the end goals is maintainability.
 
 
+###mix
+
+`mix` is a bit like  Ruby's `rake`. It's built into Elixir and extended
+by different libraries.
+
+####The basics
+
+`hex` is Elixir's package manager (a lot like Ruby's Bundler) and also
+works for Erlang.
+
+    mix hex.info
+
+lists some of the basic info about a project.
+
+    mix deps
+
+lists all your current packages.
+
+    mix hex.outdated
+
+lists hex packages for which newer versions are available.
+
+    mix deps.update --all
+
+or:
+
+    mix deps.update <package>
+
+can be used to update all or a given package.
+
+###iex
+There is no `rails console` in `Phoenix`, the more general command that
+runs a REPL with all the dependencies loaded from your mix file is:
+
+    iex -S mix
+
+
 ## Some resources:
 
     * http://elixir-lang.org/
