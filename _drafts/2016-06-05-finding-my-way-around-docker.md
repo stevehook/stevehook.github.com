@@ -75,7 +75,6 @@ are dockerizing a Rails project the recommending starting point is the
 `ruby` image (see https://hub.docker.com/_/rails/). e.g.
 
      1 FROM ruby:2.3
-     2 MAINTAINER Steve "steve@example.com"
      3
      4 RUN apt-get update \
      5  && apt-get install -y --no-install-recommends \
@@ -105,21 +104,196 @@ port to a different port on the host machine, e.g. `EXPOSE 80:3000`
 exposes port 80 from the container as port 3000 on the host machine.
 
 Finally the `CMD` command defines the process that will be run within
-the container, in this case the Rails server).
+the container, in this case a Rails server).
 
-## Docker compose
+Once you have a Dockerfile you can use `docker` to start your
+container, stop it and interact with it.
 
-If you want to run small single-purpose containers they won't be able to
-do a whole lot by themselves. You'll probably need more than one for a
+Start the container:
+
+    $ docker 
+
+Stop the container:
+
+Run an arbitrary command in the container:
+
+
+There is a lot more to docker itself but we are going to move on because
+we are going to be using multiple containers and we'll need something a
+little higher level to manage them all.
+
+## docker-compose
+
+You could install everything your application needs into a single
+container but that would not be the docker way. Containers should be
+single-purposed.
+
+So if you want to run small single-purpose containers they won't be able
+to do a whole lot by themselves. You'll need more than one for a
 non-trivial application. So if your application is built from a set of
 interdependent containers you are going to need something to organise
-them. This is where Docker compose comes in handy.
+them. This is where `docker-compose` comes in handy.
+
+`docker-compose` lets you define a list of services in a
+`docker-compose.yml` that represent the different moving parts of your
+application. For example, you might have a service for your Web
+application, another for your background workers, then others for your
+Postgres database server, Elasticsearch server and Redis server.
+
+Here is a simpler example with just two services, `web` - a Rails application
+and `db` - a Postgres database.
+
+    version: "2"
+    services:
+      web:
+        image: "foo:v1"
+        build:
+          context: .
+          dockerfile: Dockerfile
+        ports:
+          - "3000:3000"
+        command: ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+        depends_on:
+          - db
+        environment:
+          DATABASE_URL: postgres://db:5432
+        tty: true
+        stdin_open: true
+      db:
+        image: "postgres:9.6"
+        volumes:
+          - ./docker-data/postgresql:/var/lib/postgresql/data
+        ports:
+          - "5432:5432"
+
+The `db` service is based on a standard image that we are going to pull
+from Dockerhub. It creates a volume that we map to a directory in the
+host OS because we don't want our database to be re-paved every time we
+stop and start the container. The only other thing it does is to expose
+the standard Postgres port to the host OS.
+
+The `web` service is built from a custom `Dockerfile` which we have
+written for this project. `command` defines the program that the
+container runs, it's reason to exist, in this case it's starting the
+Rails server. We also declare a dependency on the `db` service and an
+environment variable that configures the database connection. The `db`
+server's hostname is just `db` inside the `web` container. Finally the
+`tty` and `stdin_open` options make it possible for you to interact with
+the container through a regular terminal session (see tips below).
+
+Start the containers:
+
+Stop the containers:
+
+Run an arbitrary command in a given container:
+
+## docker-sync
+
+It turns out that for certain kinds of applications (e.g. Rails
+applications that use asset pipeline) performance in docker containers
+can be poor. In some cases unusably poor. It turns out that docker
+volumes are not great when the container OS is performing a lot of reads
+and writes. If you hit this problem you may need to drop the volumes and
+use file synchronisation. There are various tools that need to be
+configured to do this, the `docker-sync` gem helps to wrap these in a
+simple tool.
+
+You'll need to declare what you sync and what you don't in a
+`docker-sync.yml` configuration file:
+
+    version: "2"
+
+    options:
+      verbose: true
+    syncs:
+      app-sync:
+        src: '.'
+        sync_strategy: 'native_osx'
+        sync_excludes: ['node_modules', 'tmp', '.gitignore', '.git', 'log']
+
+Note that we specifically exclude stuff that we don't need to replicate
+because it's not part of the application, like `.git` or stuff that is
+large that can be shared via a volume without impacting performance,
+like `node_modules`.
+
+The `docker-sync-stack` command then lets you start and stop the
+synchronisation services as well as the containers you've declared in
+`docker-compose.yml` in a single command:
+
+    $ docker-sync-stack start
+
+`docker-compose` will be running after issuing this command so you can
+use commands like `docker-compose exec` as if you had run plain
+`docker-compose up`.
+
+To shut everything down again:
+
+    $ docker-sync-stack clean
+
+
+## Some Tips
+
+### Listing docker processes
+
+After you run `docker-compose` you can still use regular `docker`
+commands to interact with your containers. For example:
+
+    $ docker ps
+    CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS
+                                NAMES
+    3cdb6e06e1cb        foo:v1                           "./bin/rails s -p ..."   2 days ago          Up 8 minutes        0.0.0.0:3000->3000/tcp                           foo_web_1
+    6433cd4086d5        elasticsearch:2.4.0              "/docker-entrypoin..."   2 days ago          Up 8 minutes        0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   foo_elasticsearch_1
+    86ec5926d22c        memcached:1.4.37                 "docker-entrypoint..."   2 days ago          Up 8 minutes        0.0.0.0:11211->11211/tcp                         foo_memcached_1
+    c384440d63c5        redis:3.2.4                      "docker-entrypoint..."   2 days ago          Up 8 minutes        0.0.0.0:6379->6379/tcp                           foo_redis_1
+    c87f6845587d        postgres:9.4.9                   "/docker-entrypoin..."   2 days ago          Up 8 minutes        0.0.0.0:5432->5432/t$p                           foo_db_1
+
+Note that the container ID is based on the docker-compose service name
+but also includes a random prefix. You need this in the next tip...
+
+### Attaching to a running container
+
+If you know the name of a container you can run arbitrary commands,
+e.g. for a container called `foo_web_1` you can run `bash` as follows
+(`-i` and `-t` are required to make the session interactive):
+
+    $ docker exec -it foo_web_1 bash
+
+### Debugging
+
+If you want to use a debugger on an application running inside a
+docker container then there are a couple of extra hoops to jump through.
+
+For example, I often stick a `binding.pry` in my Ruby code to debug a
+Rails application. This doesn't 'just work' if your Rails application is
+running in a Docker container.
+
+First thing you need to do is add the following two lines to your
+`docker-compose.yml` file for the service that you want to debug to hook
+up the necessary IO:
+
+    web:
+      tty: true
+      stdin_open: true
+
+This doesn't make your pry debugging session available from
+`docker-compose` - that's because `docker-compose` is typically used to
+manage multiple services so it doesn't make a lot of sense to expose a
+terminal session for one service. But you can then use `docker attach` to
+get a terminal session with an individual service, it breaks on
+`binding.pry` and allows us to work with pry in a familiar terminal
+session. e.g. if you want to attach to the service called `web` in your
+`docker-compose.yml`:
+
+    $ docker attach $(docker-compose ps -q web)
+
+(This command has to lookup the docker container name from the
+compose service in order to attach to it).
 
 ##Conclusion
 
 There is a great deal more to Docker beyond the basics I've talked about
-here.  But setting up a `Dockerfile` and `docker-compose.yml` you can
-containerize your application development environment pretty easily
-(check Dockerhub for examples if you are stuck).  This can significantly
+here. By setting up a `Dockerfile` and `docker-compose.yml` you can
+containerize your application development environment reasonably easily
+(check Dockerhub for examples if you are stuck). This can significantly
 reduce the effort needed to configure a development or test environment
 for other team members.
