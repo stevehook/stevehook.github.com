@@ -42,18 +42,19 @@ being lazy, just practical - there are too many to choose from and only
 so many hours in the day and we are a fickle business, who wants to
 spend their weekends learning last years shiny new thing?
 
-Since I started programming, one technology that has been ever present
-is the relational database. Stuff I learnt about SQL over a decade ago
-is still very useful. Stuff I learnt about certain JavaScript front-end
-libraries less than two years ago is now pretty much useless - it was a
-good mental exercise but the detail I memorised soon became a waste of
-brain space.
+Since I started programming, programming languages have come and gone
+but one technology that has been ever present is the relational
+database. Stuff I learnt about SQL over a decade ago is still very
+relevant. Stuff I learnt about certain JavaScript front-end libraries
+less than two years ago is now pretty much useless - it was a good
+mental exercise but the detail I memorised soon became a waste of brain
+space.
 
 ### ORMs stop you using your RDBMS to it's full potential
 
 I like ORMs, they make my job much easier at times, I've even built a
-couple but they are abstractions, very leaky abstractions. Great for
-perhaps 80-90% of your data access needs but they don't allow you to
+couple myself but they are abstractions, very leaky abstractions. Great
+for perhaps 80-90% of your data access needs but they don't allow you to
 construct queries that get the most out of a decent database.
 
 They also stop you learning your database. If you limit yourself to
@@ -62,7 +63,7 @@ great stuff. You can always use an ORM for the vanilla data access but
 don't be afraid to side-step it entirely if you need to manipulate data
 in an unusual way.
 
-It's nearly always a good thing to have a database do the heavy lifting
+It's nearly always a good idea to have a database do the heavy lifting
 for you. Do it to avoid loading a load of model objects via your ORM and
 then filtering, sorting and aggregating their data in memory.
 
@@ -143,7 +144,7 @@ So can we now GROUP by our rank to get the answer we are looking for?
 No you can't. It turns out grouping by the output of a window function
 is not allowed (which to be honest seems reasonable). So this is where a
 `WITH` query becomes really useful. We can declare a `WITH` query
-containing the rank and then feed query it as a normal table allowing us
+containing the rank and then feed that query into another as a normal table allowing us
 to group the way we need to:
 
     WITH ranked_order_items AS (
