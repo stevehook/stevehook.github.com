@@ -174,7 +174,7 @@ to group the way we need to:
 Now we have the results we were looking for.
 
 `WITH` queries or common table expressions are useful for getting around
-limitations like these - they can also be used to defined recursive
+limitations like these - they can also be used to define recursive
 queries. You may also choose to use the when you simply want to break up
 a large query into more manageable parts.
 
