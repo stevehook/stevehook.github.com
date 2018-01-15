@@ -26,6 +26,11 @@ If you want the grand total:
 ## Put these queries in your .psqlrc
 
 If like me you don't do this often enough to remember these queries add
-them to your `.psqlrc` as aliases:
+them to your `.psqlrc` as variables:
 
-      \set show_all_row_counts 'SELECT sum(n_live_tup) FROM pg_stat_user_tables;'
+    \set show_all_row_counts 'SELECT sum(n_live_tup) FROM pg_stat_user_tables;'
+
+In order to execute a query like this you just need to prefix the
+variable name with `:`, e.g.
+
+    :show_all_row_counts
