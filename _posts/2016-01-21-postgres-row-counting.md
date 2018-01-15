@@ -34,3 +34,9 @@ In order to execute a query like this you just need to prefix the
 variable name with `:`, e.g.
 
     :show_all_row_counts
+
+If you can't remember what you called a saved query (a common problem
+for me) you can use `\set` without any parameters to list all the
+variables you defined:
+
+    \set
