@@ -22,13 +22,13 @@ To get a fixed time, don't use `Time.new()` etc., use:
 Typically we have to deal with 3 different time zones in a Web
 application:
 
-    * UTC (Universal coordinated time) sometimes referred to as GMT
-    (Greenwich meantime) is the neutral time zone in which date-time
-    values are stored in your database.
-    * System time is the time zone where your server is running.
-    * Application time the time zone where your users are. (Lets ignore
-    the possibility that you have multiple users in different time zones
-    for now).
+* UTC (Universal coordinated time) sometimes referred to as GMT
+(Greenwich meantime) is the neutral time zone in which date-time
+values are stored in your database.
+* System time is the time zone where your server is running.
+* Application time the time zone where your users are. (Lets ignore
+the possibility that you have multiple users in different time zones
+for now).
 
 In Rails you can configure application time zone using `Rails.config.time_zone`
 to set the system wide default or `Time.zone` to set the time zone for a

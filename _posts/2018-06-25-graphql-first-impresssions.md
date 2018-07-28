@@ -61,5 +61,5 @@ kind of consistency.
 ## Conclusions
 I've made peace with the aspects of GraphQL that stir up unpleasant
 memories of SOAP. I'm now convinced that a Web API should include some
-basic type information. GraphQL does that in a sane way that is so far
+basic type information. GraphQL does that in a sane way that has so far
 been a pleasure to use.
