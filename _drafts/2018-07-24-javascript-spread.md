@@ -46,8 +46,8 @@ We can't just do (in a reducer):
     };
 
 Because this would alter the original state as well as returning the
-'right' answer. Instead we need to a fresh copy of our state modify it
-and return that.
+'right' answer. Instead we need to create a fresh copy of our state,
+modify it and return the modified copy.
 
 ## Using `Object.assign` to clone and modify
 `Object.assign` allows us to fairly cleanly copy and modify an object.
@@ -66,6 +66,8 @@ the 'people' collection and finally the top-level state object.
 Note that we didn't have to clone any of the people objects that were
 not being modified - it's fine to use the original value in such cases
 and cloning the whole state tree could get prohibitively expensive.
+
+Even so it's pretty long-winded so can Object spread make it any better?
 
 ## Using Object spread to clone and modify
 The object spread operator allows us to do much the same as the
@@ -89,11 +91,11 @@ of an object. So for example...
 
 ...mutates the nested object within `originalState`. `Object.assign`
 clones `originalState` but because the key `bob` is just a reference to
-the original `{ name: 'Robert' }` object so changing *that* object
+the original `{ name: 'Robert' }` object, changing *that* object
 changes the nested original state - which is exactly what you don't want
 to happen in a Redux reducer.
 
 Writing pure functions like Redux can be a little challenging, code can
 be a bit verbose. If you find it's also error prone then it might be
 time to consider using the Immutable library to guard against unwanted
-state mutations.
+state mutations in a way that native JavaScript collections cannot do.
